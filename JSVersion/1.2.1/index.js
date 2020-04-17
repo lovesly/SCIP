@@ -18,3 +18,17 @@ function fact_iter(product, counter, max) {
 }
 
 console.log(factorialMem(3));
+
+// wtf
+// 有点意思，我记得课上讲过，部分机器在处理的时候，会先计算函数参数，而有些是另一种顺序？
+function A(x, y) {
+  return  y === 0
+          ? 0
+          : x === 0
+            ? 2 * y
+            : y === 1
+              ? 2
+              : A(x-1, A(x, y - 1));
+}
+
+console.log(A(1, 5) === 32)
