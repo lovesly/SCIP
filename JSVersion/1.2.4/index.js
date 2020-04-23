@@ -47,3 +47,34 @@ function fast_exptI(b, n) {
 
 // =================================== //
 // exercise 1.17
+function double(x) {
+  return x + 2;
+}
+
+function halve(x) {
+  return x / 2;
+}
+
+function fast_times(a, b) {
+  return b === 1
+        ? a
+        : a === 0 || b === 0
+          ? 0
+          : is_even(b)
+            // ? fast_times(double(a), halve(b))
+            ? double(fast_times(a, halve(b)))
+            : a + fast_times(a, b-1);
+}
+
+// ===================================== //
+// exercise 1.18
+function fast_times_iter(total, a, b) {
+  return b === 1
+          ? a
+          : a === 0 || b === 0
+            ? 0
+            : is_even(b)
+              ? fast_times_iter(total, double(a), halve(b))
+              : fast_times_iter(total + a, a, b - 1);
+}
+
